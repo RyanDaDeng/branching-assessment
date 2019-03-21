@@ -5,13 +5,11 @@ namespace TimeHunter\DeliveryOrderTest\Tests;
 use PHPUnit\Framework\TestCase;
 use TimeHunter\BranchingAssessment\Models\Question;
 use TimeHunter\BranchingAssessment\Models\QuestionMap;
-use TimeHunter\BranchingAssessment\Services\BranchingAssessmentFactory;
 
 class QuestionMapTest extends TestCase
 {
     public function testQuestion()
     {
-
         $map = new QuestionMap();
 
         $map->addQuestionToMap(
@@ -32,5 +30,4 @@ class QuestionMapTest extends TestCase
         $this->assertEquals(null, $map->getQuestionById('23'));
         $this->assertNotNull($map->__toArray());
     }
-
 }
