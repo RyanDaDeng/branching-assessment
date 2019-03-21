@@ -16,7 +16,7 @@ The solution is written on Laravel framework.
 2. Via Composer
 
 ``` bash
-$ composer require timehunter/delivery-order-test v1.0.0
+$ composer require timehunter/branchingassessment
 ```
 
 3. publish assessment config
@@ -152,9 +152,9 @@ Note: For rules part, I initially was thinking about using Strategy design patte
 
 [ico-coverage]: https://coveralls.io/repos/github/RyanDaDeng/branching-assessment/badge.svg?branch=master&service=github
 [ico-build]: https://travis-ci.org/RyanDaDeng/branching-assessment.svg?branch=master
-[ico-styleci]: https://github.styleci.io/repos/174629501/shield
+[ico-styleci]: https://github.styleci.io/repos/176903016/shield
 
 
 [link-coverage]: https://coveralls.io/github/RyanDaDeng/branching-assessment?branch=master
 [link-build]: https://travis-ci.org/RyanDaDeng/branching-assessment
-[link-styleci]: https://github.styleci.io/repos/174629501
+[link-styleci]: https://github.styleci.io/repos/176903016
