@@ -118,18 +118,31 @@ The JSON sample object:
 The assessment contains its ID and a list of question. A question has next question references on "correct" and "incorrect" field, e.g. if the answer of question A is incorrect, then the next question will be C.
 
 
+Note: ...Hmm, I am not too sure about JSON structure, it looks the way too simple and I just came up with it in 5 minutes...It could either be dict based (question_id as key) or just a pure array.
+
 #### Back-end Logic
 
 1. The first step is to parse the json to be object-based model. There are three models:
 - Assessment: This stores assessment details e.g. assessmentId
-- Question: This stores question details
+- Question: This stores question details.
 - QuestionMap: This is a map collection which formats the raw data to be a basic hash map by using question_id as key. (I used Laravel Collection as a helper function.)
 
 2. The second step is to create a iterator which will iterate through the question list by calling getNextQuestionId. I implemented iterator inside of AssessmentProcessor class. The class implements the given interface and also keeps a state of current question ID.
 
+Iterator example:
+
+````php
+    $service = BranchingAssessmentFactory::createAssessmentByArray($data);
+    while ($currentQuestionId = $service->getNextQuestionId()) {
+        $answer = rand(1, 0) === 1;
+        $service->setQuestionResponse($currentQuestionId, $answer);
+    }
+````
+
 3. The last step is to create a Factory which will create AssessmentProcessor based on different constructor parameters as a correctional helper class.
 
 
+Note: For rules part, I initially was thinking about using Strategy design pattern.
 ## Testing
 
 1. use PHPUnit
