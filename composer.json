@@ -34,10 +34,9 @@
     "extra": {
         "laravel": {
             "providers": [
-                "TimeHunter\\BranchingAssessment\\BranchingAssessmentServiceProvider"
+                "TimeHunter\\BranchingAssessment\\Providers\\BranchingAssessmentServiceProvider"
             ],
             "aliases": {
-                "BranchingAssessment": "TimeHunter\\BranchingAssessment\\Facades\\BranchingAssessment"
             }
         }
     }
