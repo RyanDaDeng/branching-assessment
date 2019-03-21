@@ -84,11 +84,10 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
     }
 
     /**
-     * Get raw data.
-     * @return array
+     * @return Assessment
      */
     public function getAssessment()
     {
-        return $this->getAssessment();
+        return $this->assessment;
     }
 }

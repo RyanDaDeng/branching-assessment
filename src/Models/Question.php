@@ -103,6 +103,14 @@ class Question
     /**
      * @return string
      */
+    public function getIsCorrect()
+    {
+        return $this->isCorrect;
+    }
+
+    /**
+     * @return string
+     */
     public function getNextQuestionId()
     {
         return $this->isCorrect === true ? $this->correct : $this->incorrect;

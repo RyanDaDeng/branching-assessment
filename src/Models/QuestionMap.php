@@ -64,12 +64,12 @@ class QuestionMap
     }
 
     /**
-     * @param Question $question
+     * @param $questionId
      */
-    public function removeQuestionFromMap(Question $question)
+    public function removeQuestionFromMap($questionId)
     {
-        if ($this->questionMap->has($question->getId())) {
-            $this->questionMap->pull($question->getId());
+        if ($this->questionMap->has($questionId)) {
+            $this->questionMap->pull($questionId);
             $this->setQuestionCount($this->getQuestionCount() - 1);
         }
     }
