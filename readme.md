@@ -147,11 +147,11 @@ Iterator example:
 3. The last step is to create a Factory which will create AssessmentProcessor based on different constructor parameters.
 
 
-Note: For rules part, I initially was thinking about using Strategy design pattern, e.g. each question would bind to a list of criteria.
+Note: For rules part, I initially was thinking about using Strategy design pattern, e.g. each question would bind to a list of criteria. It will be included if I have enough time.
 
 ## Testing
 
-1. use PHPUnit
+1. use PHPUnit to cover all essential classes and cases.
 2. use travis-ci for CI/CD: https://coveralls.io/github/RyanDaDeng/delivery-order-test?branch=master
 3. tests file located at package tests file
 4. test coverage is using coveralls: https://coveralls.io/github/RyanDaDeng/branching-assessment?branch=master
