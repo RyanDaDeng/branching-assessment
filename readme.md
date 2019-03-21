@@ -8,7 +8,7 @@
 
 ## Description
 
-The solution is written on Laravel framework.
+The solution is written on Laravel framework. The solution has not fully finished yet.
 
 ## Installation
 
@@ -142,7 +142,7 @@ Iterator example:
 3. The last step is to create a Factory which will create AssessmentProcessor based on different constructor parameters.
 
 
-Note: For rules part, I initially was thinking about using Strategy design pattern.
+Note: For rules part, I initially was thinking about using Strategy design pattern, e.g. each question would bind to a list of criteria.
 
 ## Testing
 
@@ -152,7 +152,12 @@ Note: For rules part, I initially was thinking about using Strategy design patte
 4. test coverage is using coveralls: https://coveralls.io/github/RyanDaDeng/branching-assessment?branch=master
 
 ## Reflections & Conclusion
-I think the solution is a bit overkill if you think there are too many classes for the question. In reality, the solution could be fairly simple by manipulate array directly. However, if there are more rules come in, the solution will encounter a lot of if-else statements which against SOLID principles.
+
+I think the solution is a bit overkill if you think there are too many classes for the question. 
+In reality, the alternative solution could be fairly simple by manipulating array directly,however, it would encounter a lot of if-else statements which against SOLID principles.
+My solution is fully based on OOP idea and following SOLID principles as much as possible.
+
+Note: The question is a bit abstract, in real practice, I believe there can be different type of questions and the branching logic would be far more complicated.
 
 [ico-coverage]: https://coveralls.io/repos/github/RyanDaDeng/branching-assessment/badge.svg?branch=master&service=github
 [ico-build]: https://travis-ci.org/RyanDaDeng/branching-assessment.svg?branch=master
