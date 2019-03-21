@@ -10,6 +10,11 @@
 
 The solution is written on Laravel framework.
 
+## Requirement
+
+1. Laravel >=5.5
+2. PHP >= 7.0
+
 ## Installation
 
 1. This is a Laravel composer package, you need to have a Laravel installed first.
