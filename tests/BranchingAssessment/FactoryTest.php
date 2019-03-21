@@ -2,7 +2,6 @@
 
 namespace TimeHunter\DeliveryOrderTest\Tests;
 
-use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\TestCase;
 use TimeHunter\BranchingAssessment\Services\AssessmentProcessor;
 use TimeHunter\BranchingAssessment\Services\BranchingAssessmentFactory;
@@ -18,7 +17,7 @@ class FactoryTest extends TestCase
                     'question_id' => 'A',
                     'correct' => 'C',
                     'incorrect' => 'B',
-                ]
+                ],
             ],
         ];
 
@@ -36,7 +35,7 @@ class FactoryTest extends TestCase
                     'question_id' => 'A',
                     'correct' => 'C',
                     'incorrect' => 'B',
-                ]
+                ],
             ],
         ];
 
@@ -44,5 +43,4 @@ class FactoryTest extends TestCase
 
         $this->assertInstanceOf(AssessmentProcessor::class, $service);
     }
-
 }

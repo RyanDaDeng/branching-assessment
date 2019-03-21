@@ -160,7 +160,6 @@ class AssessmentTest extends TestCase
         $this->assertEquals(null, $currentQuestionId);
     }
 
-
     public function testAssessment3()
     {
         $data = [
@@ -175,7 +174,7 @@ class AssessmentTest extends TestCase
                     'question_id' => 'C',
                     'correct' => 'E',
                     'incorrect' => 'F',
-                ]
+                ],
             ],
         ];
 
@@ -190,6 +189,5 @@ class AssessmentTest extends TestCase
         $service->setQuestionResponse($currentQuestionId, true);
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals(null, $currentQuestionId);
-
     }
 }
