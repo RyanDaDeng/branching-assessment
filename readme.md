@@ -143,12 +143,16 @@ Iterator example:
 
 
 Note: For rules part, I initially was thinking about using Strategy design pattern.
+
 ## Testing
 
 1. use PHPUnit
 2. use travis-ci for CI/CD: https://coveralls.io/github/RyanDaDeng/delivery-order-test?branch=master
 3. tests file located at package tests file
 4. test coverage is using coveralls
+
+## Reflections & Conclusion
+I think the solution is a bit overkill if you think there are too many classes for the question. In reality, the solution could be fairly simple by manipulate array directly. However, if there are more rules come in, the solution will encounter a lot of if-else statements which against SOLID principles.
 
 [ico-coverage]: https://coveralls.io/repos/github/RyanDaDeng/branching-assessment/badge.svg?branch=master&service=github
 [ico-build]: https://travis-ci.org/RyanDaDeng/branching-assessment.svg?branch=master

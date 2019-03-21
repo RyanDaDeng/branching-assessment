@@ -58,7 +58,6 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
         // if its null which means the assessment ended.
         if ($this->hasNextQuestion()) {
             $this->currentQuestionId = $this->getCurrentQuestion()->getNextQuestionId();
-
             return $this->getCurrentQuestion()->getId();
         } else {
             return;
