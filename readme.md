@@ -115,7 +115,7 @@ The JSON sample object:
 
 #### JSON Explanation:
 
-The assessment contains its ID and a list of question. A question has next question references on "correct" and "incorrect" field, e.g. if the answer of question A is incorrect, then the next question will be C.
+The assessment contains its ID and a list of questions. A question has next question references for "correct" and "incorrect" fields, e.g. if the answer of question A is incorrect, then the next question will be C.
 
 
 Note: ...Hmm, I am not too sure about JSON structure, it looks the way too simple and I just came up with it in 5 minutes...It could either be dict based (question_id as key) or just a pure array.
@@ -127,7 +127,7 @@ Note: ...Hmm, I am not too sure about JSON structure, it looks the way too simpl
 - Question: This stores question details.
 - QuestionMap: This is a map collection which formats the raw data to be a basic hash map by using question_id as key. (I used Laravel Collection as a helper function.)
 
-2. The second step is to create a iterator which will iterate through the question list by calling getNextQuestionId. I implemented iterator inside of AssessmentProcessor class. The class implements the given interface and also keeps a state of current question ID.
+2. The second step is to create an iterator which will iterate through the question list by calling getNextQuestionId. I implemented iterator inside of AssessmentProcessor class. The class implements the given interface and also keeps a state of current question ID.
 
 Iterator example:
 
@@ -139,7 +139,7 @@ Iterator example:
     }
 ````
 
-3. The last step is to create a Factory which will create AssessmentProcessor based on different constructor parameters as a correctional helper class.
+3. The last step is to create a Factory which will create AssessmentProcessor based on different constructor parameters.
 
 
 Note: For rules part, I initially was thinking about using Strategy design pattern.
@@ -149,7 +149,7 @@ Note: For rules part, I initially was thinking about using Strategy design patte
 1. use PHPUnit
 2. use travis-ci for CI/CD: https://coveralls.io/github/RyanDaDeng/delivery-order-test?branch=master
 3. tests file located at package tests file
-4. test coverage is using coveralls
+4. test coverage is using coveralls: https://coveralls.io/github/RyanDaDeng/branching-assessment?branch=master
 
 ## Reflections & Conclusion
 I think the solution is a bit overkill if you think there are too many classes for the question. In reality, the solution could be fairly simple by manipulate array directly. However, if there are more rules come in, the solution will encounter a lot of if-else statements which against SOLID principles.
