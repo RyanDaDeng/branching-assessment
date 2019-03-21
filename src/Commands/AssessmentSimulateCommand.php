@@ -39,7 +39,7 @@ class AssessmentSimulateCommand extends Command
     public function handle()
     {
         $this->alert('Start your assessment');
-        $data = config('branchingassessment')->get('assessment');
+        $data = config('branchingassessment.assessment');
         $service = BranchingAssessmentFactory::createAssessmentByArray($data);
         while ($currentQuestionId = $service->getNextQuestionId()) {
             $this->warn('Attempting question #'.$service->getCurrentQuestion()->getId().'...');
