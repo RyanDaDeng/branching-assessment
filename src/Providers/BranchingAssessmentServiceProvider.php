@@ -2,11 +2,9 @@
 
 namespace TimeHunter\BranchingAssessment\Providers;
 
-
 use Illuminate\Support\ServiceProvider;
-use TimeHunter\BranchingAssessment\BranchingAssessmentFactory;
-use TimeHunter\BranchingAssessment\Commands\AssessmentSimulateCommand;
 use TimeHunter\BranchingAssessment\Commands\AssessmentStartCommand;
+use TimeHunter\BranchingAssessment\Commands\AssessmentSimulateCommand;
 
 class BranchingAssessmentServiceProvider extends ServiceProvider
 {
@@ -33,7 +31,6 @@ class BranchingAssessmentServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../../config/branchingassessment.php', 'branchingassessment'
         );
-
     }
 
     /**
@@ -60,7 +57,7 @@ class BranchingAssessmentServiceProvider extends ServiceProvider
         // Registering package commands.
         $this->commands([
             AssessmentStartCommand::class,
-            AssessmentSimulateCommand::class
+            AssessmentSimulateCommand::class,
         ]);
     }
 }

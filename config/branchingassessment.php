@@ -7,43 +7,43 @@ return [
             [
                 'question_id' => 'A',
                 'correct' => 'C',
-                'incorrect' => 'B'
+                'incorrect' => 'B',
             ],
             [
                 'question_id' => 'C',
                 'correct' => 'E',
-                'incorrect' => 'F'
+                'incorrect' => 'F',
             ],
             [
                 'question_id' => 'B',
                 'correct' => 'D',
-                'incorrect' => 'D'
+                'incorrect' => 'D',
             ],
             [
                 'question_id' => 'D',
                 'correct' => 'C',
-                'incorrect' => 'C'
+                'incorrect' => 'C',
             ],
             [
                 'question_id' => 'E',
                 'correct' => 'G',
-                'incorrect' => 'G'
+                'incorrect' => 'G',
             ],
             [
                 'question_id' => 'F',
                 'correct' => 'H',
-                'incorrect' => 'H'
+                'incorrect' => 'H',
             ],
             [
                 'question_id' => 'H',
                 'correct' => 'G',
-                'incorrect' => null
+                'incorrect' => null,
             ],
             [
                 'question_id' => 'G',
                 'correct' => null,
-                'incorrect' => null
+                'incorrect' => null,
             ],
-        ]
-    ]
+        ],
+    ],
 ];

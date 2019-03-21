@@ -3,24 +3,22 @@
  * Created by PhpStorm.
  * User: dadeng
  * Date: 2019/3/20
- * Time: 9:04 PM
+ * Time: 9:04 PM.
  */
 
 namespace TimeHunter\BranchingAssessment\Models;
 
-
 class Assessment
 {
     /**
-     * @var $assessmentId
+     * @var
      */
     private $assessmentId;
 
     /**
-     * @var QuestionMap $questionMap
+     * @var QuestionMap
      */
     private $questionMap;
-
 
     /**
      * @param string $assessmentDefinition
@@ -39,33 +37,35 @@ class Assessment
                 ->setCorrect($question['correct']);
             $new->questionMap->addQuestionToMap($question);
         }
+
         return $new;
     }
-
 
     /**
      * @return QuestionMap
      */
-    public function getQuestionMap(){
+    public function getQuestionMap()
+    {
         return $this->questionMap;
     }
 
     /**
      * @return mixed
      */
-    public function getAssessmentId(){
+    public function getAssessmentId()
+    {
         return $this->assessmentId;
     }
 
     /**
-     * Get raw data
+     * Get raw data.
      * @return array
      */
     public function __toArray()
     {
         $data = [
             'assessment_id' => $this->assessmentId,
-            'questions' => $this->questionMap->__toArray()
+            'questions' => $this->questionMap->__toArray(),
         ];
 
         return $data;

@@ -3,26 +3,24 @@
  * Created by PhpStorm.
  * User: dadeng
  * Date: 2019/3/20
- * Time: 9:04 PM
+ * Time: 9:04 PM.
  */
 
 namespace TimeHunter\BranchingAssessment\Services;
 
-
-use TimeHunter\BranchingAssessment\Interfaces\BranchingAssessmentAlgorithm;
-use TimeHunter\BranchingAssessment\Models\Assessment;
 use TimeHunter\BranchingAssessment\Models\Question;
+use TimeHunter\BranchingAssessment\Models\Assessment;
+use TimeHunter\BranchingAssessment\Interfaces\BranchingAssessmentAlgorithm;
 
 class AssessmentProcessor implements BranchingAssessmentAlgorithm
 {
-
     /**
-     * @var Assessment $assessment
+     * @var Assessment
      */
     public $assessment;
 
     /**
-     * @var Question $currentQuestion
+     * @var Question
      */
     protected $currentQuestionId;
 
@@ -36,7 +34,7 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
     }
 
     /**
-     * Set question response
+     * Set question response.
      * @param string $questionId
      * @param bool $isCorrect
      */
@@ -46,13 +44,13 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
     }
 
     /**
-     * Get next question
+     * Get next question.
      * @return null|string
      */
     public function getNextQuestionId()
     {
         // if current question is null, set first element from map as first question
-        if (!$this->currentQuestionId) {
+        if (! $this->currentQuestionId) {
             return $this->currentQuestionId = $this->assessment->getQuestionMap()->getFirstQuestion()->getId();
         }
 
@@ -60,14 +58,15 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
         // if its null which means the assessment ended.
         if ($this->hasNextQuestion()) {
             $this->currentQuestionId = $this->getCurrentQuestion()->getNextQuestionId();
+
             return $this->getCurrentQuestion()->getId();
         } else {
-            return null;
+            return;
         }
     }
 
     /**
-     * Get current in attempting question
+     * Get current in attempting question.
      * @return Question|null
      */
     public function getCurrentQuestion()
@@ -76,7 +75,7 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
     }
 
     /**
-     * Check if the current question has next question
+     * Check if the current question has next question.
      * @return bool
      */
     public function hasNextQuestion()
@@ -85,13 +84,11 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
     }
 
     /**
-     * Get raw data
+     * Get raw data.
      * @return array
      */
     public function getAssessment()
     {
         return $this->getAssessment();
     }
-
-
 }

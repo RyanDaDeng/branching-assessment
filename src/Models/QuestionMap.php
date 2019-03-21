@@ -3,23 +3,22 @@
  * Created by PhpStorm.
  * User: dadeng
  * Date: 2019/3/20
- * Time: 9:04 PM
+ * Time: 9:04 PM.
  */
 
 namespace TimeHunter\BranchingAssessment\Models;
 
 class QuestionMap
 {
-
     /**
-     * Using collect for question map
+     * Using collect for question map.
      * @var \Illuminate\Support\Collection
      */
     private $questionMap;
 
     /**
-     * number of question
-     * @var int $questionCount
+     * number of question.
+     * @var int
      */
     private $questionCount = 0;
 
@@ -69,12 +68,10 @@ class QuestionMap
      */
     public function removeQuestionFromMap(Question $question)
     {
-
         if ($this->questionMap->has($question->getId())) {
             $this->questionMap->pull($question->getId());
             $this->setQuestionCount($this->getQuestionCount() - 1);
         }
-
     }
 
     /**
@@ -86,7 +83,7 @@ class QuestionMap
         if ($this->questionMap->has($questionId)) {
             return $this->questionMap->get($questionId);
         } else {
-            return null;
+            return;
         }
     }
 
@@ -97,11 +94,12 @@ class QuestionMap
     {
         $data = [];
         foreach ($this->questionMap as $row) {
-            /**
+            /*
              * @var Question $row
              */
             $data[] = $row->__toArray();
         }
+
         return $data;
     }
 }

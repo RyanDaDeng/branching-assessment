@@ -42,7 +42,7 @@ class AssessmentStartCommand extends Command
         $data = config('branchingassessment')->get('assessment');
         $service = BranchingAssessmentFactory::createAssessmentByArray($data);
         while ($currentQuestionId = $service->getNextQuestionId()) {
-            $this->warn('Attempting question #' . $service->getCurrentQuestion()->getId() . '...');
+            $this->warn('Attempting question #'.$service->getCurrentQuestion()->getId().'...');
             $correct = $this->choice('Choose Correct or Incorrect answer?', ['Correct', 'Incorrect']);
             $service->setQuestionResponse($currentQuestionId, $correct == 0 ? true : false);
         }
