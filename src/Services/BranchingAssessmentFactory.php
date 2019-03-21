@@ -3,15 +3,13 @@
  * Created by PhpStorm.
  * User: dadeng
  * Date: 2019/3/21
- * Time: 8:23 PM
+ * Time: 8:23 PM.
  */
 
 namespace TimeHunter\BranchingAssessment\Services;
 
-
 class BranchingAssessmentFactory
 {
-
     /**
      * @param $json
      * @return AssessmentProcessor

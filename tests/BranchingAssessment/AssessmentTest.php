@@ -5,7 +5,6 @@ namespace TimeHunter\DeliveryOrderTest\Tests;
 use PHPUnit\Framework\TestCase;
 use TimeHunter\BranchingAssessment\Services\BranchingAssessmentFactory;
 
-
 class AssessmentTest extends TestCase
 {
     public function testAssessmentArray()
@@ -16,44 +15,44 @@ class AssessmentTest extends TestCase
                 [
                     'question_id' => 'A',
                     'correct' => 'C',
-                    'incorrect' => 'B'
+                    'incorrect' => 'B',
                 ],
                 [
                     'question_id' => 'C',
                     'correct' => 'E',
-                    'incorrect' => 'F'
+                    'incorrect' => 'F',
                 ],
                 [
                     'question_id' => 'B',
                     'correct' => 'D',
-                    'incorrect' => 'D'
+                    'incorrect' => 'D',
                 ],
                 [
                     'question_id' => 'D',
                     'correct' => 'C',
-                    'incorrect' => 'C'
+                    'incorrect' => 'C',
                 ],
                 [
                     'question_id' => 'E',
                     'correct' => 'G',
-                    'incorrect' => 'G'
+                    'incorrect' => 'G',
                 ],
                 [
                     'question_id' => 'F',
                     'correct' => 'H',
-                    'incorrect' => 'H'
+                    'incorrect' => 'H',
                 ],
                 [
                     'question_id' => 'H',
                     'correct' => 'G',
-                    'incorrect' => null
+                    'incorrect' => null,
                 ],
                 [
                     'question_id' => 'G',
                     'correct' => null,
-                    'incorrect' => null
+                    'incorrect' => null,
                 ],
-            ]
+            ],
         ];
 
         $service = BranchingAssessmentFactory::createAssessmentByArray($data);
@@ -73,17 +72,14 @@ class AssessmentTest extends TestCase
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('H', $currentQuestionId);
 
-
         $service->setQuestionResponse($currentQuestionId, true);
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('G', $currentQuestionId);
-
 
         $service->setQuestionResponse($currentQuestionId, false);
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals(null, $currentQuestionId);
     }
-
 
     public function testAssessmentJson()
     {
@@ -93,44 +89,44 @@ class AssessmentTest extends TestCase
                 [
                     'question_id' => 'A',
                     'correct' => 'C',
-                    'incorrect' => 'B'
+                    'incorrect' => 'B',
                 ],
                 [
                     'question_id' => 'C',
                     'correct' => 'E',
-                    'incorrect' => 'F'
+                    'incorrect' => 'F',
                 ],
                 [
                     'question_id' => 'B',
                     'correct' => 'D',
-                    'incorrect' => 'D'
+                    'incorrect' => 'D',
                 ],
                 [
                     'question_id' => 'D',
                     'correct' => 'C',
-                    'incorrect' => 'C'
+                    'incorrect' => 'C',
                 ],
                 [
                     'question_id' => 'E',
                     'correct' => 'G',
-                    'incorrect' => 'G'
+                    'incorrect' => 'G',
                 ],
                 [
                     'question_id' => 'F',
                     'correct' => 'H',
-                    'incorrect' => 'H'
+                    'incorrect' => 'H',
                 ],
                 [
                     'question_id' => 'H',
                     'correct' => 'G',
-                    'incorrect' => null
+                    'incorrect' => null,
                 ],
                 [
                     'question_id' => 'G',
                     'correct' => null,
-                    'incorrect' => null
+                    'incorrect' => null,
                 ],
-            ]
+            ],
         ];
 
         $service = BranchingAssessmentFactory::createAssessmentByJson(json_encode($data));
@@ -150,15 +146,12 @@ class AssessmentTest extends TestCase
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('H', $currentQuestionId);
 
-
         $service->setQuestionResponse($currentQuestionId, true);
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('G', $currentQuestionId);
-
 
         $service->setQuestionResponse($currentQuestionId, false);
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals(null, $currentQuestionId);
     }
-
 }

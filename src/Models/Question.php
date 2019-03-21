@@ -3,28 +3,27 @@
  * Created by PhpStorm.
  * User: dadeng
  * Date: 2019/3/20
- * Time: 9:04 PM
+ * Time: 9:04 PM.
  */
 
 namespace TimeHunter\BranchingAssessment\Models;
 
-
 class Question
 {
     /**
-     * @var string $id
+     * @var string
      */
     private $id;
     /**
-     * @var string $correct
+     * @var string
      */
     private $correct;
     /**
-     * @var string $incorrect
+     * @var string
      */
     private $incorrect;
     /**
-     * @var string $isCorrect
+     * @var string
      */
     private $isCorrect;
 
@@ -51,6 +50,7 @@ class Question
     public function setCorrect($correct): self
     {
         $this->correct = $correct;
+
         return $this;
     }
 
@@ -69,6 +69,7 @@ class Question
     public function setIncorrect($incorrect): self
     {
         $this->incorrect = $incorrect;
+
         return $this;
     }
 
@@ -87,6 +88,7 @@ class Question
     public function setId($id): self
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -114,8 +116,7 @@ class Question
         return [
             'question_id' => $this->id,
             'correct' => $this->correct,
-            'incorrect' => $this->incorrect
+            'incorrect' => $this->incorrect,
         ];
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace TimeHunter\BranchingAssessment\Commands;
 
-
 use Illuminate\Console\Command;
 use TimeHunter\BranchingAssessment\Services\BranchingAssessmentFactory;
 
@@ -43,10 +42,10 @@ class AssessmentSimulateCommand extends Command
         $data = config('branchingassessment')->get('assessment');
         $service = BranchingAssessmentFactory::createAssessmentByArray($data);
         while ($currentQuestionId = $service->getNextQuestionId()) {
-            $this->warn('Attempting question #' . $service->getCurrentQuestion()->getId() . '...');
+            $this->warn('Attempting question #'.$service->getCurrentQuestion()->getId().'...');
             $answer = rand(1, 0) === 1;
             $string = $answer == true ? 'Correct' : 'Incorrect';
-            $this->info('> Answer is ' . $string);
+            $this->info('> Answer is '.$string);
             $service->setQuestionResponse($currentQuestionId, $answer);
         }
         $this->alert('Assessment Ended');
