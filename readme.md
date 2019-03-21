@@ -21,83 +21,121 @@ $ composer require timehunter/delivery-order-test v1.0.0
 
 3. publish assessment config
 
-## Usage
+``` bash
+$ php artisan vendor:publish --provider="TimeHunter\BranchingAssessment\Providers\BranchingAssessmentServiceProvider" 
+```
+
+It will publish a branchingassessment.php config file under config directory, this will be used for you to simulate and play around with the package.
 
 
-## Question Analysis
-
-Potential design patterns can be used for this problem: factory, template method and strategy
-
-The problem can be categorised as the following points:
-
-1. How to create different objects based on dynamic input value? e.g. “enterpriseDelivery” return EnterpriseDelivery object
- - use Factory pattern which encapsulates the logic of creating objects.
- 
-2. Different object should contain its own workflow and dependent services.
- - use Strategy pattern(interface) or template method(inheritance)
- 
-3. Domain driven design
- - Basically make the system as module based and each module has its own services. If there are any common interfaces, they can be shared across different module.
- - From the question mentioned, I can see there are three modules can be found: Delivery Order module, Third party module and Marketing module
-
-
-## My solution
-
-#### Assumptions
-1. Marketing service and Third Party api service have been fully tested.
-2. No
-
-#### Designs
-
-1. I use Template Method design pattern which is based on inheritance. It allows me modify parts of an algorithm by extending those parts in sub-classes.
-2. I also use factory pattern to determine which type of delivery order object I need to return.
-
-
-<img src="https://github.com/RyanDaDeng/delivery-order-test/blob/master/template_method.jpg" width="500" height="300" />
-
-
- Note:
- 
- 1. As mentioned in the question, the EnterpriseDelivery Order needs to be validated with third party api first, if its failed, the logic should no longer continue.
- In this case, I have a defined steps in the abstract class, e.g. check validation first, then do the logic.
- 
- ````php
- ....
-     public function process()
-     {
-         if ($this->validate()) {
-             $this->before();
-             $this->handle();
-             $this->after();
- 
-             return true;
-         } else {
-             return false;
-         }
-     }
-....
- ````
- 
- The handle function is an abstract function which will be implemented for all sub-classes. Use this function to define its own workflow.
- 
- 
 ## Usage
 
 ````php
- $json = "[{},{},{}...{}]"; // the given sample json data
- $service = new DeliveryOrderService($json);
- $objects = $service->processJson() // this return a list of different delivery order objects
+
+ $service = BranchingAssessmentFactory::createAssessmentByArray($data);
  
+ $service->getNextQuestionId() // first time get fist question
+ 
+ $service->setQuestionResponse($questionId, $isCorrect);
  
 ````
+
+## Commands Simulation
+
+1. Remember to publish the config file
+2. Go to branchingassessment.php config file, you can define your own assessment structure, by default, the structure follows the given diagram from the assessment.
+3. Run the following command to simulate the assessment
+``` bash
+$ php artisan assessment:simulate
+```
+or run the following command to manually play the assessment:
+``` bash
+$ php artisan assessment:start
+```
+
+
+## Solution
+
+
+#### Designs
+
+
+The JSON sample object:
+
+````
+{
+  "assessment": {
+    "assessment_id": "1",
+    "questions": [
+      {
+        "question_id": "A",
+        "correct": "C",
+        "incorrect": "B"
+      },
+      {
+        "question_id": "C",
+        "correct": "E",
+        "incorrect": "F"
+      },
+      {
+        "question_id": "B",
+        "correct": "D",
+        "incorrect": "D"
+      },
+      {
+        "question_id": "D",
+        "correct": "C",
+        "incorrect": "C"
+      },
+      {
+        "question_id": "E",
+        "correct": "G",
+        "incorrect": "G"
+      },
+      {
+        "question_id": "F",
+        "correct": "H",
+        "incorrect": "H"
+      },
+      {
+        "question_id": "H",
+        "correct": "G",
+        "incorrect": null
+      },
+      {
+        "question_id": "G",
+        "correct": null,
+        "incorrect": null
+      }
+    ]
+  }
+}
+````
+
+
+#### JSON Explanation:
+
+The assessment contains its ID and a list of question. A question has next question references on "correct" and "incorrect" field, e.g. if the answer of question A is incorrect, then the next question will be C.
+
+
+#### Back-end Logic
+
+1. The first step is to parse the json to be object-based model. There are three models:
+- Assessment: This stores assessment details e.g. assessmentId
+- Question: This stores question details
+- QuestionMap: This is a map collection which formats the raw data to be a basic hash map by using question_id as key. (I used Laravel Collection as a helper function.)
+
+2. The second step is to create a iterator which will iterate through the question list by calling getNextQuestionId. I implemented iterator inside of AssessmentProcessor class. The class implements the given interface and also keeps a state of current question ID.
+
+3. The last step is to create a Factory which will create AssessmentProcessor based on different constructor parameters as a correctional helper class.
+
 
 ## Testing
 
 1. use PHPUnit
-2. Mocking Interfaces for testing
-3. Pass different json to test if the service returns the correct delivery type
-4. use travis-ci for CI/CD: https://coveralls.io/github/RyanDaDeng/delivery-order-test?branch=master
-
+2. use travis-ci for CI/CD: https://coveralls.io/github/RyanDaDeng/delivery-order-test?branch=master
+3. tests file located at package tests file
+4. test coverage is using coveralls
 
 [ico-coverage]: https://coveralls.io/repos/github/RyanDaDeng/branching-assessment/badge.svg?branch=master&service=github
 [ico-build]: https://travis-ci.org/RyanDaDeng/branching-assessment.svg?branch=master

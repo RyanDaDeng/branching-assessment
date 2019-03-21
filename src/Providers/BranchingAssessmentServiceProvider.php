@@ -30,7 +30,10 @@ class BranchingAssessmentServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/branchingassessment.php', 'branchingassessment');
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/branchingassessment.php', 'branchingassessment'
+        );
+
     }
 
     /**
@@ -50,6 +53,10 @@ class BranchingAssessmentServiceProvider extends ServiceProvider
      */
     protected function bootForConsole()
     {
+        $this->publishes([
+            __DIR__.'/../../config/branchingassessment.php' => config_path('branchingassessment.php'),
+        ], 'branchingassessment.config');
+
         // Registering package commands.
         $this->commands([
             AssessmentStartCommand::class,
