@@ -34,7 +34,6 @@ It will publish a branchingassessment.php config file under config directory, th
 
 
 ## Usage
-
 ````php
 
 // client side
@@ -77,6 +76,10 @@ or run the following command to manually play the assessment:
 ``` bash
 $ php artisan assessment:start
 ```
+
+## Suggestions
+
+I highly suggest you to run the two commands to play with the system first before diving into the code.
 
 
 ## Solution
