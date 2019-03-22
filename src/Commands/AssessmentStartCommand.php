@@ -45,11 +45,11 @@ class AssessmentStartCommand extends Command
         $data = $assessments[$choice];
         $service = BranchingAssessmentFactory::createAssessmentByArray($data);
         while ($currentQuestionId = $service->getNextQuestionId()) {
-            $this->warn('Attempting question #' . $service->getCurrentQuestion()->getId() . '...' . 'Your current score is: ' . $service->getCurrentScore());
+            $this->warn('Attempting question #'.$service->getCurrentQuestion()->getId().'...'.'Your current score is: '.$service->getCurrentScore());
             $correct = $this->choice('Choose Correct or Incorrect answer?', ['Correct', 'Incorrect']);
-            $this->info('> Answer is ' . $correct);
+            $this->info('> Answer is '.$correct);
             $service->setQuestionResponse($currentQuestionId, $correct === 'Correct' ? true : false);
-            $this->info('> Checking skip rule ' . $service->getCurrentQuestion()->getRule()['type']);
+            $this->info('> Checking skip rule '.$service->getCurrentQuestion()->getRule()['type']);
         }
         $this->alert('Assessment Ended');
     }

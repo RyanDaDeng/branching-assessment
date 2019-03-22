@@ -13,7 +13,7 @@ class QuestionTest extends TestCase
         $question->setId('1')->setRule([
             'type' => 'simple_skip_rule',
             'correct' => 'C',
-            'incorrect' => 'B'
+            'incorrect' => 'B',
         ]);
 
         $this->assertEquals('1', $question->getId());
@@ -22,8 +22,8 @@ class QuestionTest extends TestCase
             'rule' => [
                 'type' => 'simple_skip_rule',
                 'correct' => 'C',
-                'incorrect' => 'B'
-            ]
+                'incorrect' => 'B',
+            ],
         ], $question->__toArray());
     }
 }

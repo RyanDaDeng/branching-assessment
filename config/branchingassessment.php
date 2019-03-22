@@ -12,64 +12,64 @@ return [
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'C',
-                    'incorrect' => 'B'
-                ]
+                    'incorrect' => 'B',
+                ],
             ],
             [
                 'question_id' => 'C',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'E',
-                    'incorrect' => 'F'
-                ]
+                    'incorrect' => 'F',
+                ],
             ],
             [
                 'question_id' => 'B',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'D',
-                    'incorrect' => 'D'
-                ]
+                    'incorrect' => 'D',
+                ],
             ],
             [
                 'question_id' => 'D',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'C',
-                    'incorrect' => 'C'
-                ]
+                    'incorrect' => 'C',
+                ],
             ],
             [
                 'question_id' => 'E',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'G',
-                    'incorrect' => 'G'
-                ]
+                    'incorrect' => 'G',
+                ],
             ],
             [
                 'question_id' => 'F',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'H',
-                    'incorrect' => 'H'
-                ]
+                    'incorrect' => 'H',
+                ],
             ],
             [
                 'question_id' => 'H',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'G',
-                    'incorrect' => null
-                ]
+                    'incorrect' => null,
+                ],
             ],
             [
                 'question_id' => 'G',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => null,
-                    'incorrect' => null
-                ]
+                    'incorrect' => null,
+                ],
             ],
         ],
     ],
@@ -81,8 +81,8 @@ return [
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => 'C',
-                    'incorrect' => 'C'
-                ]
+                    'incorrect' => 'C',
+                ],
             ],
             [
                 'question_id' => 'C',
@@ -90,25 +90,25 @@ return [
                     'type' => 'score_check_rule',
                     'threshold' => 2,
                     'next' => 'E',
-                    'default' => 'F'
-                ]
+                    'default' => 'F',
+                ],
             ],
             [
                 'question_id' => 'E',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => null,
-                    'incorrect' => null
-                ]
+                    'incorrect' => null,
+                ],
             ],
             [
                 'question_id' => 'F',
                 'rule' => [
                     'type' => 'simple_skip_rule',
                     'correct' => null,
-                    'incorrect' => null
-                ]
-            ]
+                    'incorrect' => null,
+                ],
+            ],
         ],
-    ]
+    ],
 ];
