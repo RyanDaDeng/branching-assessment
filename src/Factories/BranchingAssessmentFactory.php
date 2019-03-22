@@ -31,10 +31,11 @@ class BranchingAssessmentFactory
     }
 
     /**
+     * @param $configKey
      * @return AssessmentProcessor
      */
-    public static function createAssessmentFromConfig()
+    public static function createAssessmentFromConfig($configKey)
     {
-        return self::createAssessmentByArray(config('branchingassessment')->get('assessment'));
+        return self::createAssessmentByArray(config("branchingassessment.$configKey"));
     }
 }
