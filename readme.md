@@ -37,13 +37,33 @@ It will publish a branchingassessment.php config file under config directory, th
 
 ````php
 
+// client side
  $service = BranchingAssessmentFactory::createAssessmentByArray($data);
  
  $service->getNextQuestionId() // first time get fist question
  
  $service->setQuestionResponse($questionId, $isCorrect);
  
+ // AssessmentProcessor factory
+ $service = BranchingAssessmentFactory::createAssessmentByArray($data); // create service entry
+ 
+ // Rule factory
+ RuleFactory::process(new AssessmentProcessor($json)) // rule processor
+ 
+ 
+ 
 ````
+
+## Design Keywords
+
+- OOP: polymorphism
+- OOP: inheritance
+- OOP: encapsulation
+- Strategy design pattern
+- Iterator design pattern
+- Factory design pattern
+
+Above design patterns might be slightly improved according to the assessment's requirement.
 
 ## Commands Simulation
 
@@ -187,7 +207,7 @@ Explanation: If the current score is 2 (include the result of question A), and t
 
 ##### Strategy Pattern - Rule Design
 
-The rule design follows Strategy pattern (OOP: polymorphism), which means all core logic has been encapsulated in AssessmentProcessor, and what you do is just to create a new strategy by extending AbstractRule class (the class implements RuleInterface).
+The rule design follows Strategy pattern (OOP: polymorphism), which means all the core logic has been encapsulated in AssessmentProcessor, and what you do is just to create a new strategy by extending AbstractRule class (the class implements RuleInterface).
 
 This ensures any skip/branching logic can be freely added to the logic without touching any core code.
 
