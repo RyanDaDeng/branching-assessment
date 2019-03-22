@@ -3,7 +3,7 @@
 namespace TimeHunter\DeliveryOrderTest\Tests;
 
 use PHPUnit\Framework\TestCase;
-use TimeHunter\BranchingAssessment\Services\BranchingAssessmentFactory;
+use TimeHunter\BranchingAssessment\Factories\BranchingAssessmentFactory;
 
 class AssessmentTest extends TestCase
 {
@@ -14,43 +14,67 @@ class AssessmentTest extends TestCase
             'questions' => [
                 [
                     'question_id' => 'A',
-                    'correct' => 'C',
-                    'incorrect' => 'B',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'C',
+                        'incorrect' => 'B'
+                    ]
                 ],
                 [
                     'question_id' => 'C',
-                    'correct' => 'E',
-                    'incorrect' => 'F',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'E',
+                        'incorrect' => 'F'
+                    ]
                 ],
                 [
                     'question_id' => 'B',
-                    'correct' => 'D',
-                    'incorrect' => 'D',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'D',
+                        'incorrect' => 'D'
+                    ]
                 ],
                 [
                     'question_id' => 'D',
-                    'correct' => 'C',
-                    'incorrect' => 'C',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'C',
+                        'incorrect' => 'C'
+                    ]
                 ],
                 [
                     'question_id' => 'E',
-                    'correct' => 'G',
-                    'incorrect' => 'G',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'G',
+                        'incorrect' => 'G'
+                    ]
                 ],
                 [
                     'question_id' => 'F',
-                    'correct' => 'H',
-                    'incorrect' => 'H',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'H',
+                        'incorrect' => 'H'
+                    ]
                 ],
                 [
                     'question_id' => 'H',
-                    'correct' => 'G',
-                    'incorrect' => null,
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'G',
+                        'incorrect' => NULL
+                    ]
                 ],
                 [
                     'question_id' => 'G',
-                    'correct' => null,
-                    'incorrect' => null,
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => NULL,
+                        'incorrect' => NULL
+                    ]
                 ],
             ],
         ];
@@ -62,8 +86,7 @@ class AssessmentTest extends TestCase
 
         $service->setQuestionResponse($currentQuestionId, true);
         $this->assertEquals(true, $service->getCurrentQuestion()->getIsCorrect());
-        $this->assertEquals('C', $service->getCurrentQuestion()->getCorrect());
-        $this->assertEquals('B', $service->getCurrentQuestion()->getIncorrect());
+
 
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('C', $currentQuestionId);
@@ -93,43 +116,67 @@ class AssessmentTest extends TestCase
             'questions' => [
                 [
                     'question_id' => 'A',
-                    'correct' => 'C',
-                    'incorrect' => 'B',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'C',
+                        'incorrect' => 'B'
+                    ]
                 ],
                 [
                     'question_id' => 'C',
-                    'correct' => 'E',
-                    'incorrect' => 'F',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'E',
+                        'incorrect' => 'F'
+                    ]
                 ],
                 [
                     'question_id' => 'B',
-                    'correct' => 'D',
-                    'incorrect' => 'D',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'D',
+                        'incorrect' => 'D'
+                    ]
                 ],
                 [
                     'question_id' => 'D',
-                    'correct' => 'C',
-                    'incorrect' => 'C',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'C',
+                        'incorrect' => 'C'
+                    ]
                 ],
                 [
                     'question_id' => 'E',
-                    'correct' => 'G',
-                    'incorrect' => 'G',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'G',
+                        'incorrect' => 'G'
+                    ]
                 ],
                 [
                     'question_id' => 'F',
-                    'correct' => 'H',
-                    'incorrect' => 'H',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'H',
+                        'incorrect' => 'H'
+                    ]
                 ],
                 [
                     'question_id' => 'H',
-                    'correct' => 'G',
-                    'incorrect' => null,
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'G',
+                        'incorrect' => null
+                    ]
                 ],
                 [
                     'question_id' => 'G',
-                    'correct' => null,
-                    'incorrect' => null,
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => null,
+                        'incorrect' => null
+                    ]
                 ],
             ],
         ];
@@ -167,13 +214,19 @@ class AssessmentTest extends TestCase
             'questions' => [
                 [
                     'question_id' => 'A',
-                    'correct' => null,
-                    'incorrect' => null,
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => null,
+                        'incorrect' => null
+                    ]
                 ],
                 [
                     'question_id' => 'C',
-                    'correct' => 'E',
-                    'incorrect' => 'F',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'E',
+                        'incorrect' => 'F'
+                    ]
                 ],
             ],
         ];

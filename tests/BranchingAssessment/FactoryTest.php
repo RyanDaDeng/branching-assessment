@@ -4,7 +4,7 @@ namespace TimeHunter\DeliveryOrderTest\Tests;
 
 use PHPUnit\Framework\TestCase;
 use TimeHunter\BranchingAssessment\Services\AssessmentProcessor;
-use TimeHunter\BranchingAssessment\Services\BranchingAssessmentFactory;
+use TimeHunter\BranchingAssessment\Factories\BranchingAssessmentFactory;
 
 class FactoryTest extends TestCase
 {
@@ -15,8 +15,11 @@ class FactoryTest extends TestCase
             'questions' => [
                 [
                     'question_id' => 'A',
-                    'correct' => 'C',
-                    'incorrect' => 'B',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'C',
+                        'incorrect' => 'B'
+                    ]
                 ],
             ],
         ];
@@ -33,8 +36,11 @@ class FactoryTest extends TestCase
             'questions' => [
                 [
                     'question_id' => 'A',
-                    'correct' => 'C',
-                    'incorrect' => 'B',
+                    'rule' => [
+                        'type' => 'simple_skip_rule',
+                        'correct' => 'C',
+                        'incorrect' => 'B'
+                    ]
                 ],
             ],
         ];

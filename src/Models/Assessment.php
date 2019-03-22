@@ -33,8 +33,7 @@ class Assessment
         foreach ($data['questions'] as $question) {
             $question = Question::create()
                 ->setId($question['question_id'])
-                ->setIncorrect($question['incorrect'])
-                ->setCorrect($question['correct']);
+                ->setRule($question['rule']);
             $new->questionMap->addQuestionToMap($question);
         }
 

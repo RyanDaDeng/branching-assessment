@@ -6,7 +6,9 @@
  * Time: 8:23 PM.
  */
 
-namespace TimeHunter\BranchingAssessment\Services;
+namespace TimeHunter\BranchingAssessment\Factories;
+
+use TimeHunter\BranchingAssessment\Services\AssessmentProcessor;
 
 class BranchingAssessmentFactory
 {

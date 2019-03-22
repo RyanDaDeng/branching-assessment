@@ -8,7 +8,7 @@
 
 ## Description
 
-The solution is written on Laravel framework. The solution has not fully finished yet.
+The solution is written on Laravel framework.
 
 ## Requirement
 
@@ -65,65 +65,135 @@ $ php artisan assessment:start
 #### Designs
 
 
-The JSON sample object:
+The JSON sample object from the assessment example:
 
 ````
 {
-  "assessment": {
-    "assessment_id": "1",
-    "questions": [
+   "assessment_id":"1",
+   "questions":[
       {
-        "question_id": "A",
-        "correct": "C",
-        "incorrect": "B"
+         "question_id":"A",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":"C",
+            "incorrect":"B"
+         }
       },
       {
-        "question_id": "C",
-        "correct": "E",
-        "incorrect": "F"
+         "question_id":"C",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":"E",
+            "incorrect":"F"
+         }
       },
       {
-        "question_id": "B",
-        "correct": "D",
-        "incorrect": "D"
+         "question_id":"B",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":"D",
+            "incorrect":"D"
+         }
       },
       {
-        "question_id": "D",
-        "correct": "C",
-        "incorrect": "C"
+         "question_id":"D",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":"C",
+            "incorrect":"C"
+         }
       },
       {
-        "question_id": "E",
-        "correct": "G",
-        "incorrect": "G"
+         "question_id":"E",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":"G",
+            "incorrect":"G"
+         }
       },
       {
-        "question_id": "F",
-        "correct": "H",
-        "incorrect": "H"
+         "question_id":"F",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":"H",
+            "incorrect":"H"
+         }
       },
       {
-        "question_id": "H",
-        "correct": "G",
-        "incorrect": null
+         "question_id":"H",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":"G",
+            "incorrect":null
+         }
       },
       {
-        "question_id": "G",
-        "correct": null,
-        "incorrect": null
+         "question_id":"G",
+         "rule":{
+            "type":"simple_skip_rule",
+            "correct":null,
+            "incorrect":null
+         }
       }
-    ]
-  }
+   ]
 }
 ````
 
+#### Rule
 
-#### JSON Explanation:
-
-The assessment contains its ID and a list of questions. A question has next question references for "correct" and "incorrect" fields, e.g. if the answer of question A is incorrect, then the next question will be C.
+##### Simple Skip rule:
 
 
-Note: ...Hmm, I am not too sure about JSON structure, it looks the way too simple and I just came up with it in 5 minutes...It could either be dict based (question_id as key) or just a pure array.
+````
+
+{
+....
+    'question_id': 'C',
+    'rule' :{
+        'type' : 'simple_skip_rule',
+        'correct' => 'A',
+        'incorrect' => 'B'
+    }
+....     
+}
+
+````
+Explanation: If the answer is correct, it goes to A, if the answer is correct, it goes to B.
+
+
+##### Score Check rule:
+
+
+````
+
+{
+....
+    'question_id': 'A',
+    'rule' :{
+         'type' : 'score_check_rule',
+          'threshold' : 2,
+          'next': 'E',
+          'default': 'F'
+    }
+....     
+}
+
+````
+
+Explanation: If the current score is 2 (include the result of question A), if the score >= 2, it goes to E else goes to F.
+
+
+##### Strategy Pattern - Rule Design
+
+The rule design follows Strategy pattern (OOP: polymorphism), which means all core logic has been encapsulated in AssessmentProcessor, and what you do is just to create a new strategy by extending AbstractRule class (the class implements RuleInterface).
+
+This ensures any skip/branching logic can be freely added to the logic without touching any core code.
+
+
+#### Factory Pattern - Rule creations and AssessmentProcessor creations
+
+- AssessmentProcessorFactory is used to create AssessmentProcessor based on different constructor parameters.
+- RuleFactory is used to create different rule strategy by passing the AssessmentProcessor class.
 
 #### Back-end Logic
 
@@ -144,10 +214,8 @@ Iterator example:
     }
 ````
 
-3. The last step is to create a Factory which will create AssessmentProcessor based on different constructor parameters.
+3. The third step is to check current question's rule by using RuleFactory to create a rule processor in which will return a next question ID.
 
-
-Note: For rules part, I initially was thinking about using Strategy design pattern, e.g. each question would bind to a list of criteria. It will be included if I have enough time.
 
 ## Testing
 

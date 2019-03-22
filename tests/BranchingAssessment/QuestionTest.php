@@ -10,16 +10,20 @@ class QuestionTest extends TestCase
     public function testQuestion()
     {
         $question = new Question();
-        $question->setId('1')
-            ->setIncorrect('B')
-            ->setCorrect('C');
+        $question->setId('1')->setRule([
+            'type' => 'simple_skip_rule',
+            'correct' => 'C',
+            'incorrect' => 'B'
+        ]);
+
         $this->assertEquals('1', $question->getId());
-        $this->assertEquals('B', $question->getIncorrect());
-        $this->assertEquals('C', $question->getCorrect());
         $this->assertEquals([
             'question_id' => '1',
-            'correct' => 'C',
-            'incorrect' => 'B',
+            'rule' => [
+                'type' => 'simple_skip_rule',
+                'correct' => 'C',
+                'incorrect' => 'B'
+            ]
         ], $question->__toArray());
     }
 }

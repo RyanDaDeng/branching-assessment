@@ -14,14 +14,10 @@ class QuestionMapTest extends TestCase
 
         $map->addQuestionToMap(
             Question::create()->setId('1')
-                ->setIncorrect('B')
-                ->setCorrect('C')
         );
 
         $map->addQuestionToMap(
             Question::create()->setId('2')
-                ->setIncorrect('E')
-                ->setCorrect('F')
         );
 
         $map->removeQuestionFromMap('2');

@@ -14,18 +14,8 @@ class Question
      * @var string
      */
     private $id;
-    /**
-     * @var string
-     */
-    private $correct;
-    /**
-     * @var string
-     */
-    private $incorrect;
-    /**
-     * @var string
-     */
     private $isCorrect;
+    private $rule;
 
     /**
      * @return Question
@@ -35,43 +25,6 @@ class Question
         return new self;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getCorrect()
-    {
-        return $this->correct;
-    }
-
-    /**
-     * @param $correct
-     * @return Question
-     */
-    public function setCorrect($correct): self
-    {
-        $this->correct = $correct;
-
-        return $this;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getIncorrect()
-    {
-        return $this->incorrect;
-    }
-
-    /**
-     * @param $incorrect
-     * @return Question
-     */
-    public function setIncorrect($incorrect): self
-    {
-        $this->incorrect = $incorrect;
-
-        return $this;
-    }
 
     /**
      * @return string
@@ -108,12 +61,15 @@ class Question
         return $this->isCorrect;
     }
 
-    /**
-     * @return string
-     */
-    public function getNextQuestionId()
+    public function getRule()
     {
-        return $this->isCorrect === true ? $this->correct : $this->incorrect;
+        return $this->rule;
+    }
+
+    public function setRule($value)
+    {
+        $this->rule = $value;
+        return $this;
     }
 
     /**
@@ -123,8 +79,7 @@ class Question
     {
         return [
             'question_id' => $this->id,
-            'correct' => $this->correct,
-            'incorrect' => $this->incorrect,
+            'rule' => $this->rule
         ];
     }
 }
