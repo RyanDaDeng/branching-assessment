@@ -141,6 +141,8 @@ The JSON sample object from the assessment example:
 
 #### Rule
 
+Currently, the solution contains two different type of rules as below: (its pretty easy to add a new rule without modifying any core code.)
+
 ##### Simple Skip rule:
 
 
@@ -158,7 +160,7 @@ The JSON sample object from the assessment example:
 }
 
 ````
-Explanation: If the answer is correct, it goes to A, if the answer is correct, it goes to B.
+Explanation: If the answer is correct, it goes to A, if the answer is incorrect, it goes to B.
 
 
 ##### Score Check rule:
