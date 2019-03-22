@@ -182,7 +182,7 @@ Explanation: If the answer is correct, it goes to A, if the answer is incorrect,
 
 ````
 
-Explanation: If the current score is 2 (include the result of question A), if the score >= 2, it goes to E else goes to F.
+Explanation: If the current score is 2 (include the result of question A), and the score >= 2, it goes to E else goes to F.
 
 
 ##### Strategy Pattern - Rule Design
