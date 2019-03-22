@@ -8,9 +8,9 @@
 
 namespace TimeHunter\BranchingAssessment\Services;
 
-use TimeHunter\BranchingAssessment\Factories\RuleFactory;
 use TimeHunter\BranchingAssessment\Models\Question;
 use TimeHunter\BranchingAssessment\Models\Assessment;
+use TimeHunter\BranchingAssessment\Factories\RuleFactory;
 use TimeHunter\BranchingAssessment\Interfaces\BranchingAssessmentAlgorithm;
 
 class AssessmentProcessor implements BranchingAssessmentAlgorithm
@@ -60,17 +60,17 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
     public function getNextQuestionId()
     {
         // if current question is null, set first element from map as first question
-        if (!$this->currentQuestionId) {
+        if (! $this->currentQuestionId) {
             return $this->currentQuestionId = $this->assessment->getQuestionMap()->getFirstQuestion()->getId();
         }
 
         // if the question has branching logic
         // if its null which means the assessment ended.
 
-
         $nextQuestionId = RuleFactory::process($this)->getNextQuestionId();
         if ($nextQuestionId) {
             $this->currentQuestionId = $nextQuestionId;
+
             return $this->getCurrentQuestion()->getId();
         } else {
             return;
@@ -85,7 +85,6 @@ class AssessmentProcessor implements BranchingAssessmentAlgorithm
     {
         return $this->currentQuestionId ? $this->assessment->getQuestionMap()->getQuestionById($this->currentQuestionId) : null;
     }
-
 
     /**
      * @return Assessment

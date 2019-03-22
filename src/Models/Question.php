@@ -25,7 +25,6 @@ class Question
         return new self;
     }
 
-
     /**
      * @return string
      */
@@ -69,6 +68,7 @@ class Question
     public function setRule($value)
     {
         $this->rule = $value;
+
         return $this;
     }
 
@@ -79,7 +79,7 @@ class Question
     {
         return [
             'question_id' => $this->id,
-            'rule' => $this->rule
+            'rule' => $this->rule,
         ];
     }
 }

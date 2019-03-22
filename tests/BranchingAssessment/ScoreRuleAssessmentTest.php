@@ -9,7 +9,7 @@ class ScoreRuleAssessmentTest extends TestCase
 {
     public function testAssessmentArray()
     {
-        $data =  [
+        $data = [
             'assessment_id' => '2',
             'questions' => [
                 [
@@ -17,8 +17,8 @@ class ScoreRuleAssessmentTest extends TestCase
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'C'
-                    ]
+                        'incorrect' => 'C',
+                    ],
                 ],
                 [
                     'question_id' => 'C',
@@ -26,25 +26,25 @@ class ScoreRuleAssessmentTest extends TestCase
                         'type' => 'score_check_rule',
                         'threshold' => 2,
                         'next' => 'E',
-                        'default' => 'F'
-                    ]
+                        'default' => 'F',
+                    ],
                 ],
                 [
                     'question_id' => 'E',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => null,
-                        'incorrect' => null
-                    ]
+                        'incorrect' => null,
+                    ],
                 ],
                 [
                     'question_id' => 'F',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => null,
-                        'incorrect' => null
-                    ]
-                ]
+                        'incorrect' => null,
+                    ],
+                ],
             ],
         ];
 
@@ -58,17 +58,14 @@ class ScoreRuleAssessmentTest extends TestCase
         $this->assertEquals('C', $currentQuestionId);
         $service->setQuestionResponse($currentQuestionId, true);
 
-
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('E', $currentQuestionId);
         $service->setQuestionResponse($currentQuestionId, true);
-
     }
-
 
     public function testAssessmentArray2()
     {
-        $data =  [
+        $data = [
             'assessment_id' => '2',
             'questions' => [
                 [
@@ -76,8 +73,8 @@ class ScoreRuleAssessmentTest extends TestCase
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'C'
-                    ]
+                        'incorrect' => 'C',
+                    ],
                 ],
                 [
                     'question_id' => 'C',
@@ -85,25 +82,25 @@ class ScoreRuleAssessmentTest extends TestCase
                         'type' => 'score_check_rule',
                         'threshold' => 2,
                         'next' => 'E',
-                        'default' => 'F'
-                    ]
+                        'default' => 'F',
+                    ],
                 ],
                 [
                     'question_id' => 'E',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => null,
-                        'incorrect' => null
-                    ]
+                        'incorrect' => null,
+                    ],
                 ],
                 [
                     'question_id' => 'F',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => null,
-                        'incorrect' => null
-                    ]
-                ]
+                        'incorrect' => null,
+                    ],
+                ],
             ],
         ];
 
@@ -117,11 +114,8 @@ class ScoreRuleAssessmentTest extends TestCase
         $this->assertEquals('C', $currentQuestionId);
         $service->setQuestionResponse($currentQuestionId, false);
 
-
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('F', $currentQuestionId);
         $service->setQuestionResponse($currentQuestionId, true);
-
     }
-
 }
