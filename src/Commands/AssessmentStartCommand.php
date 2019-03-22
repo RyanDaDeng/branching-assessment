@@ -41,7 +41,7 @@ class AssessmentStartCommand extends Command
         $this->alert('Start your assessment');
         $assessments = config('branchingassessment');
         $assessmentIds = collect($assessments)->keys();
-        $choice = $this->choice('Choose Correct or Incorrect answer?', $assessmentIds->toArray());
+        $choice = $this->choice('Choose an assessment:', $assessmentIds->toArray());
         $data = $assessments[$choice];
         $service = BranchingAssessmentFactory::createAssessmentByArray($data);
         while ($currentQuestionId = $service->getNextQuestionId()) {
