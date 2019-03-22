@@ -18,8 +18,8 @@ class FactoryTest extends TestCase
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'B'
-                    ]
+                        'incorrect' => 'B',
+                    ],
                 ],
             ],
         ];
@@ -39,8 +39,8 @@ class FactoryTest extends TestCase
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'B'
-                    ]
+                        'incorrect' => 'B',
+                    ],
                 ],
             ],
         ];

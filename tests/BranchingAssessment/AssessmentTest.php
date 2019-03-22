@@ -17,64 +17,64 @@ class AssessmentTest extends TestCase
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'B'
-                    ]
+                        'incorrect' => 'B',
+                    ],
                 ],
                 [
                     'question_id' => 'C',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'E',
-                        'incorrect' => 'F'
-                    ]
+                        'incorrect' => 'F',
+                    ],
                 ],
                 [
                     'question_id' => 'B',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'D',
-                        'incorrect' => 'D'
-                    ]
+                        'incorrect' => 'D',
+                    ],
                 ],
                 [
                     'question_id' => 'D',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'C'
-                    ]
+                        'incorrect' => 'C',
+                    ],
                 ],
                 [
                     'question_id' => 'E',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'G',
-                        'incorrect' => 'G'
-                    ]
+                        'incorrect' => 'G',
+                    ],
                 ],
                 [
                     'question_id' => 'F',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'H',
-                        'incorrect' => 'H'
-                    ]
+                        'incorrect' => 'H',
+                    ],
                 ],
                 [
                     'question_id' => 'H',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'G',
-                        'incorrect' => NULL
-                    ]
+                        'incorrect' => null,
+                    ],
                 ],
                 [
                     'question_id' => 'G',
                     'rule' => [
                         'type' => 'simple_skip_rule',
-                        'correct' => NULL,
-                        'incorrect' => NULL
-                    ]
+                        'correct' => null,
+                        'incorrect' => null,
+                    ],
                 ],
             ],
         ];
@@ -86,7 +86,6 @@ class AssessmentTest extends TestCase
 
         $service->setQuestionResponse($currentQuestionId, true);
         $this->assertEquals(true, $service->getCurrentQuestion()->getIsCorrect());
-
 
         $currentQuestionId = $service->getNextQuestionId();
         $this->assertEquals('C', $currentQuestionId);
@@ -119,64 +118,64 @@ class AssessmentTest extends TestCase
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'B'
-                    ]
+                        'incorrect' => 'B',
+                    ],
                 ],
                 [
                     'question_id' => 'C',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'E',
-                        'incorrect' => 'F'
-                    ]
+                        'incorrect' => 'F',
+                    ],
                 ],
                 [
                     'question_id' => 'B',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'D',
-                        'incorrect' => 'D'
-                    ]
+                        'incorrect' => 'D',
+                    ],
                 ],
                 [
                     'question_id' => 'D',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'C',
-                        'incorrect' => 'C'
-                    ]
+                        'incorrect' => 'C',
+                    ],
                 ],
                 [
                     'question_id' => 'E',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'G',
-                        'incorrect' => 'G'
-                    ]
+                        'incorrect' => 'G',
+                    ],
                 ],
                 [
                     'question_id' => 'F',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'H',
-                        'incorrect' => 'H'
-                    ]
+                        'incorrect' => 'H',
+                    ],
                 ],
                 [
                     'question_id' => 'H',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'G',
-                        'incorrect' => null
-                    ]
+                        'incorrect' => null,
+                    ],
                 ],
                 [
                     'question_id' => 'G',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => null,
-                        'incorrect' => null
-                    ]
+                        'incorrect' => null,
+                    ],
                 ],
             ],
         ];
@@ -217,16 +216,16 @@ class AssessmentTest extends TestCase
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => null,
-                        'incorrect' => null
-                    ]
+                        'incorrect' => null,
+                    ],
                 ],
                 [
                     'question_id' => 'C',
                     'rule' => [
                         'type' => 'simple_skip_rule',
                         'correct' => 'E',
-                        'incorrect' => 'F'
-                    ]
+                        'incorrect' => 'F',
+                    ],
                 ],
             ],
         ];

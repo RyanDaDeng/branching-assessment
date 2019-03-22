@@ -3,11 +3,10 @@
  * Created by PhpStorm.
  * User: dadeng
  * Date: 2019/3/22
- * Time: 9:48 PM
+ * Time: 9:48 PM.
  */
 
 namespace TimeHunter\BranchingAssessment\Factories;
-
 
 use TimeHunter\BranchingAssessment\Rules\ScoreCheckRule;
 use TimeHunter\BranchingAssessment\Rules\SimpleSkipRule;
@@ -15,7 +14,6 @@ use TimeHunter\BranchingAssessment\Services\AssessmentProcessor;
 
 class RuleFactory
 {
-
     public static function process(AssessmentProcessor $assessmentProcessor)
     {
         $rule = $assessmentProcessor->getCurrentQuestion()->getRule();
@@ -25,8 +23,7 @@ class RuleFactory
             case SimpleSkipRule::RULE_TYPE:
                 return new SimpleSkipRule($assessmentProcessor);
             default:
-                return null;
+                return;
         }
     }
-
 }

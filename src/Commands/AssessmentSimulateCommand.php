@@ -46,12 +46,12 @@ class AssessmentSimulateCommand extends Command
 
         $service = BranchingAssessmentFactory::createAssessmentByArray($data);
         while ($currentQuestionId = $service->getNextQuestionId()) {
-            $this->warn('Attempting question #' . $service->getCurrentQuestion()->getId() . '...' . 'Your current score is: ' . $service->getCurrentScore());
+            $this->warn('Attempting question #'.$service->getCurrentQuestion()->getId().'...'.'Your current score is: '.$service->getCurrentScore());
             $answer = rand(1, 0) === 1;
             $string = $answer == true ? 'Correct' : 'Incorrect';
-            $this->info('> Answer is ' . $string);
+            $this->info('> Answer is '.$string);
             $service->setQuestionResponse($currentQuestionId, $answer);
-            $this->info('> Checking skip rule ' . $service->getCurrentQuestion()->getRule()['type']);
+            $this->info('> Checking skip rule '.$service->getCurrentQuestion()->getRule()['type']);
         }
         $this->alert('Assessment Ended');
     }
