@@ -18,6 +18,7 @@
         <whitelist>
             <directory>src/Interfaces/</directory>
             <directory>src/Models/</directory>
+            <directory>src/Factories/</directory>
             <directory>src/Services/</directory>
             <directory>src/Interfaces/</directory>
         </whitelist>
