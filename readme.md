@@ -245,7 +245,7 @@ Iterator example:
 ## Testing
 
 1. use PHPUnit to cover all essential classes and cases.
-2. use travis-ci for CI/CD: https://coveralls.io/github/RyanDaDeng/delivery-order-test?branch=master
+2. use travis-ci for CI/CD:https://travis-ci.org/RyanDaDeng/branching-assessment
 3. tests file located at package tests file
 4. test coverage is using coveralls: https://coveralls.io/github/RyanDaDeng/branching-assessment?branch=master
 
