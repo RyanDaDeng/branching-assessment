@@ -10,6 +10,7 @@ namespace TimeHunter\BranchingAssessment\Factories;
 
 use TimeHunter\BranchingAssessment\Rules\ScoreCheckRule;
 use TimeHunter\BranchingAssessment\Rules\SimpleSkipRule;
+use TimeHunter\BranchingAssessment\Rules\XiongjiaRule;
 use TimeHunter\BranchingAssessment\Services\AssessmentProcessor;
 
 class RuleFactory
@@ -22,6 +23,8 @@ class RuleFactory
                 return new ScoreCheckRule($assessmentProcessor);
             case SimpleSkipRule::RULE_TYPE:
                 return new SimpleSkipRule($assessmentProcessor);
+            case XiongjiaRule::RULE_TYPE:
+                return new XiongjiaRule($assessmentProcessor);
             default:
                 return;
         }

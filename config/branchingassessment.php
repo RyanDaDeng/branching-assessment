@@ -10,9 +10,8 @@ return [
             [
                 'question_id' => 'A',
                 'rule' => [
-                    'type' => 'simple_skip_rule',
-                    'correct' => 'C',
-                    'incorrect' => 'B',
+                    'type' => 'xiongjia',
+                    'next' => null
                 ],
             ],
             [
