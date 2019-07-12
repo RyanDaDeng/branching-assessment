@@ -11,7 +11,7 @@ return [
                 'question_id' => 'A',
                 'rule' => [
                     'type' => 'xiongjia',
-                    'next' => null
+                    'next' => null,
                 ],
             ],
             [

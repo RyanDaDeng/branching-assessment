@@ -8,9 +8,9 @@
 
 namespace TimeHunter\BranchingAssessment\Factories;
 
+use TimeHunter\BranchingAssessment\Rules\XiongjiaRule;
 use TimeHunter\BranchingAssessment\Rules\ScoreCheckRule;
 use TimeHunter\BranchingAssessment\Rules\SimpleSkipRule;
-use TimeHunter\BranchingAssessment\Rules\XiongjiaRule;
 use TimeHunter\BranchingAssessment\Services\AssessmentProcessor;
 
 class RuleFactory
